@@ -1,10 +1,13 @@
 import {useState,usEffect, useEffect} from "react";
 
+const axios= require("axios");
+
 export const Todo= ()=>{
 
     const [todos,setTodos]=useState([]);
     const [page,setPage]=useState(1);
     const [text,setText]=useState("");
+    const [text2,setText2]=useState("");
   
     
     useEffect(()=>{
@@ -25,15 +28,23 @@ export const Todo= ()=>{
     <div>
 
     <input 
-    placeholder="Enter Todo" 
+    placeholder="Title" 
     onChange={(txt)=>{
         //console.log(txt);
-        setText(txt.target.value);}}
+        setText(txt.target.value);
+    }}
     />
+
+    <input 
+    placeholder="Add Task" 
+    onChange={(txt2)=>{
+        //console.log(txt);
+        setText2(txt2.target.value);}}
+    /> 
 
     <button
     onClick={()=>{
-        const data={status:false,title:text};
+        const data={status:false,title:text+" "+text2};
 
         fetch("http://localhost:3001/todos",{
             method:"POST",
@@ -47,7 +58,14 @@ export const Todo= ()=>{
     
     {todos.map((e)=>(
       <div key={e.id}>
-          {e.title} - {e.status ? "Done" : "To be Done"}
+          {e.title} 
+
+          <button 
+          onClick={()=>{
+              axios.delete(`http://localhost:3001/todos/${e.id}`)
+              .then(Data);
+          }}
+          >Delete</button>
       </div>
     ))}
 
