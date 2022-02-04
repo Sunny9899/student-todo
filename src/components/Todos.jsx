@@ -28,7 +28,8 @@ export const Todo= ()=>{
     <div>
 
     <input 
-    placeholder="Title" 
+    id="inp1"
+    placeholder="Title..." 
     onChange={(txt)=>{
         //console.log(txt);
         setText(txt.target.value);
@@ -36,13 +37,14 @@ export const Todo= ()=>{
     />
 
     <input 
-    placeholder="Add Task" 
+    id="inp2"
+    placeholder="Add Task..." 
     onChange={(txt2)=>{
         //console.log(txt);
         setText2(txt2.target.value);}}
     /> 
 
-    <button
+    <button id="addBtn"
     onClick={()=>{
         const data={status:false,title:text+" "+text2};
 
@@ -54,22 +56,29 @@ export const Todo= ()=>{
             },
         }).then(Data);
     }}
-    >AddtoDo</button>
+    >ADD</button>
     
+    <div id="newtodo">
+ 
     {todos.map((e)=>(
       <div key={e.id}>
           {e.title} 
 
-          <button 
+          <button id="delete"
           onClick={()=>{
               axios.delete(`http://localhost:3001/todos/${e.id}`)
               .then(Data);
           }}
-          >Delete</button>
+          >Delete
+          </button>
+
       </div>
     ))}
 
+    </div>
+
     <button
+    className="prev"
     onClick={()=>{
         if(page<=1){
             //console.log("p1 "+page);
@@ -82,6 +91,7 @@ export const Todo= ()=>{
     >Prev</button>
 
     <button
+    className="next"
     onClick={()=>{
         setPage(page+1);
     }}    

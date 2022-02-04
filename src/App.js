@@ -5,6 +5,7 @@ function App() {
   return (
     <div className="outterScreen">
       <div className="App">
+        <h1 className="title">Todo...</h1>
       <Todo />
       </div>
     </div>
