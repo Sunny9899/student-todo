@@ -28,7 +28,7 @@ export const Todo= ()=>{
     <div>
 
     <input 
-    id="inp1"
+    className="inputTitle"
     placeholder="Title..." 
     onChange={(txt)=>{
         //console.log(txt);
@@ -37,14 +37,14 @@ export const Todo= ()=>{
     />
 
     <input 
-    id="inp2"
+    className="inputBody"
     placeholder="Add Task..." 
     onChange={(txt2)=>{
         //console.log(txt);
         setText2(txt2.target.value);}}
     /> 
 
-    <button id="addBtn"
+    <button className="addBtn"
     onClick={()=>{
         const data={status:false,title:text+" "+text2};
 
@@ -56,7 +56,7 @@ export const Todo= ()=>{
             },
         }).then(Data);
     }}
-    >ADD</button>
+    >Add</button>
     
     <div id="newtodo">
  
