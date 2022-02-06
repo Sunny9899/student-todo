@@ -16,7 +16,7 @@ export const Todo= ()=>{
     
 
     const Data=()=>{
-        fetch(`http://localhost:3001/todos?_page=${page}&_limit=5`)
+        fetch(`https://fake-asgnt-server.herokuapp.com/todos?_page=${page}&_limit=5`)
         .then((d)=> d.json())
         .then((res) =>{
             //console.log(res);
@@ -48,7 +48,7 @@ export const Todo= ()=>{
     onClick={()=>{
         const data={status:false,title:text+" "+text2};
 
-        fetch("http://localhost:3001/todos",{
+        fetch("https://fake-asgnt-server.herokuapp.com/todos",{
             method:"POST",
             body:JSON.stringify(data),
             headers:{
@@ -66,8 +66,8 @@ export const Todo= ()=>{
 
           <button id="delete"
           onClick={()=>{
-              axios.delete(`http://localhost:3001/todos/${e.id}`)
-              .then(Data);
+            axios.delete(`https://fake-asgnt-server.herokuapp.com/todos/${e.id}`)
+            .then(Data);
           }}
           >Delete
           </button>
